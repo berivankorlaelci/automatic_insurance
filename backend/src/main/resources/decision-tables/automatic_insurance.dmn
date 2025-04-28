@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_1xgzekb" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.34.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.7.0">
+  <decision id="Decision_182e6uz" name="automatic_insurance">
+    <decisionTable id="DecisionTable_1yv70fd">
+      <input id="Input_1" label="Age">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ig2fyj" label="Health">
+        <inputExpression id="LiteralExpression_12ckxig" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0f16mh1" label="Job">
+        <inputExpression id="LiteralExpression_1aq5g8u" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_08efvr1" label="Income">
+        <inputExpression id="LiteralExpression_1yiujl8" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_06qnfpg" label="Smoker">
+        <inputExpression id="LiteralExpression_0swfvgb" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0v6d845" label="Alcohol">
+        <inputExpression id="LiteralExpression_052jp57" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_05r9vft" label="Insurance History">
+        <inputExpression id="LiteralExpression_148stzr" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_13n2fxp" label="Marital Status">
+        <inputExpression id="LiteralExpression_0lbkcm2" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_Asset" label="Asset">
+  <inputExpression id="LiteralExpression_Asset" typeRef="string">
+    <text></text>
+  </inputExpression>
+</input>
+      <output id="Output_1" label="Decision" typeRef="string" biodi:width="192" />
+      <rule id="DecisionRule_1n5vrl8">
+        <description>Young, healthy, stable career</description>
+        <inputEntry id="UnaryTests_1ftsp4l">
+          <text>Age in [18..40]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oz38mx">
+          <text>Health = "Very Good", "Good"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kbmz3q">
+          <text>Job = "Engineer", "Student"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cbpgda">
+          <text>Income ≥ 10,000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0baww6q">
+          <text>Smoker = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ankjls">
+          <text>Alcohol = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o6k49h">
+          <text>Insurance History = "Clean"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0se2re8">
+          <text>Marital Status = "Married" and Asset = "House/Car/Both"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1663k31">
+          <text>Insurance Approved</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bj42r0">
+        <description>Acceptable middle-risk</description>
+        <inputEntry id="UnaryTests_1d8gx21">
+          <text>Age in [18..40]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j1w72z">
+          <text>Health = "Average"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n2lmdv">
+          <text>Job = "Other"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17m0q05">
+          <text>Income ≥ 5,000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xn270l">
+          <text>Smoker = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1349adu">
+          <text>Alcohol = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0d44zaw">
+          <text>Insurance History = "Clean"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07pf5et">
+          <text>(Any)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1laysey">
+          <text>Insurance Approved</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09advqk">
+        <description>Mature, good condition</description>
+        <inputEntry id="UnaryTests_0fq7h17">
+          <text>Age in [41..60]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1t03gw0">
+          <text>Health = "Very Good"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0pt3u8o">
+          <text>(Any Job)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14sqck0">
+          <text>Income ≥ 10,000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14pp7kw">
+          <text>Smoker = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ze1o91">
+          <text>Alcohol = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15hkeyq">
+          <text>Insurance History = "Clean"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09e83o7">
+          <text>Marital Status = "Married" and Asset = "House/Car/Both"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r4wdn2">
+          <text>Insurance Approved</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1d6j1ro">
+        <description>Elder but very strong financially</description>
+        <inputEntry id="UnaryTests_1ss02w0">
+          <text>Age &gt; 60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j64znz">
+          <text>Health = "Very Good"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r6rblb">
+          <text>(Any Job)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0q9s5jc">
+          <text>Income ≥ 20,000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18i2tio">
+          <text>Smoker = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sfohzo">
+          <text>Alcohol = "No"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10xrkqf">
+          <text>Insurance History = "Clean"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1nd36v6">
+          <text>Marital Status = "Married" and Asset = "Both"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0igdn2e">
+          <text>Insurance Approved (Special Case)</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11ty8fc">
+        <description>High occupational and health risk</description>
+        <inputEntry id="UnaryTests_0cifehj">
+          <text>Age in [18..60]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10sd2do">
+          <text>Health = "Average", "Poor"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ysa8xj">
+          <text>Job = "Pilot", "Driver"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dpkwdk">
+          <text>Income &lt; 10,000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hpvr8v">
+          <text>Smoker = "Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qi5y1y">
+          <text>Alcohol = "Yes"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vv9sif">
+          <text>Insurance History = "Problematic"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1u5jpzz">
+          <text>Marital Status = "Single" and No Assets</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0iwou4m">
+          <text>Insurance Denied</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09tuiqi">
+        <description>Age and health risk</description>
+        <inputEntry id="UnaryTests_1sffy33">
+          <text>Age &gt; 60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b090r9">
+          <text>Health = "Average", "Poor"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09eabp7">
+          <text>(Any Job)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ls7jh">
+          <text>(Any Income)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_147tesd">
+          <text>(Any Smoking)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kt15ma">
+          <text>(Any Alcohol)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02q9c9q">
+          <text>(Any Insurance History)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sj91mc">
+          <text>(Any Marital Status and Assets)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0flyjd7">
+          <text>Insurance Denied</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wqlua5">
+        <description>Major health issue</description>
+        <inputEntry id="UnaryTests_17mb2th">
+          <text>(Any Age)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ew1w3w">
+          <text>Health = "Poor"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13o6mxm">
+          <text>(Any Job)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xx9iiq">
+          <text>(Any Income)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k6s6hj">
+          <text>(Any Smoking)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i42mm5">
+          <text>(Any Alcohol)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_147aakg">
+          <text>(Any Insurance History)</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gpx3jo">
+          <text>(Any Marital Status and Assets)</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bjtrbt">
+          <text>Insurance Denied</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_182e6uz">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
