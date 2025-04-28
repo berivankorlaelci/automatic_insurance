@@ -1,0 +1,40 @@
+<div class="topbar">
+  <div class="menu-icon" (click)="toggleSidebar()">&#9776;</div>
+  <div class="logo">
+    <i class="fas fa-home"></i>
+    <span>Insurance Detector App</span>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar" [class.open]="isSidebarOpen">
+  <button class="close-btn" (click)="toggleSidebar()">&#x2718;</button>
+  <a routerLink="/home">  <i class="fas fa-home"></i> Home Page</a>
+  <a routerLink="/completed"> <i class="fa fa-check" aria-hidden="true"></i> Find Your Insurance - Take The Test </a>
+  <a routerLink="/discover"> <i class="fa fa-compass" aria-hidden="true"></i> Discover Other Insurances</a>
+</div>
+
+<div class="quiz-wrapper">
+  <div class="form-container" *ngIf="!formSubmitted">
+    <h2>{{ questions[currentQuestionIndex].text }}</h2>
+
+    <div class="options">
+      <button
+        *ngFor="let option of questions[currentQuestionIndex].options"
+        [class.selected]="isSelected(option)"
+        (click)="nextQuestion(option)">
+        {{ option }}
+      </button>
+    </div>
+
+    <div class="navigation-buttons" *ngIf="currentQuestionIndex > 0">
+      <button (click)="previousQuestion()">Geri Git</button>
+    </div>
+  </div>
+
+  <div class="result-container" *ngIf="formSubmitted">
+    <h2>Sonuç:</h2>
+    <p>{{ sigortaSonucu }}</p>
+    <button (click)="resetForm()">Yeniden Dene</button>
+  </div>
+</div>
