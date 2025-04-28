@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigortaFormComponent } from './components/sigorta-form/sigorta-form.component';
 import {provideHttpClient} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {provideHttpClient} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    FormsModule
   ],
   providers: [ provideHttpClient()],
   bootstrap: [AppComponent]

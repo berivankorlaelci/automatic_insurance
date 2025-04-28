@@ -62,7 +62,53 @@
 }
 
 
-.quiz-wrapper {
+
+.user-info-container h2 {
+  margin-bottom: 10px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+  background-color: purple;
+}
+
+.quiz-wrapper, .name-surname-tc-container {
   min-height: 100vh;
   background-size: cover;
   display: flex;
@@ -71,7 +117,7 @@
   padding: 30px;
 }
 
-.form-container, .result-container {
+.form-container, .result-container, .user-info-container {
   background-color: rgba(255, 255, 255, 0.85);
   padding: 40px;
   border-radius: 20px;
@@ -114,6 +160,28 @@ button:hover {
   font-size: 20px;
   font-weight: bold;
   color: #388e3c;
+}
+
+.result-container button {
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 15px;
+}
+
+.result-container button:first-child {
+  background-color: mediumpurple;
+}
+
+.result-container button:last-child {
+  background-color: darkslateblue;
+  padding: 15px;
+}
+.result-container button:last-child:hover {
+  background-color: darkblue;
 }
 
 .navigation-buttons {

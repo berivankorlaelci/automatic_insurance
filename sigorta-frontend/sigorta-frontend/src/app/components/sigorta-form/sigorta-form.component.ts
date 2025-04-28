@@ -7,8 +7,10 @@ import {SigortaService} from '../../services/sigorta.service';
   templateUrl: './sigorta-form.component.html',
   styleUrl: './sigorta-form.component.css'
 })
-export class SigortaFormComponent {
 
+
+
+export class SigortaFormComponent {
   questions = [
     { text: 'Yaşınızı seçin', options: ['15-17', '18-25', '26-40', '41-60', '60+'], field: 'yas' },
     { text: 'Sağlık durumunuz?', options: ['Çok İyi', 'İyi', 'Orta', 'Kötü'], field: 'saglik' },
@@ -20,13 +22,28 @@ export class SigortaFormComponent {
     { text: 'Medeni durumunuz?', options: ['Evli', 'Bekar'], field: 'medeni' },
     { text: 'Mal varlığınız?', options: ['Ev var', 'Araba var', 'İkisi de var', 'Hiçbiri'], field: 'malvarligi' }
   ];
+  userInfo = {
+    name: '',
+    surname: '',
+    tc: ''
+  };
 
   currentQuestionIndex = 0;
   answers: any = {};
   formSubmitted = false;
   sigortaSonucu: string = '';
+  showQuestions = false;
 
   constructor(private sigortaService: SigortaService) { }
+
+
+  startQuiz() {
+    if (this.userInfo.name && this.userInfo.surname && this.userInfo.tc) {
+      this.showQuestions = true;
+    } else {
+      alert("Lütfen tüm bilgileri eksiksiz girin.");
+    }
+  }
 
   nextQuestion(selectedOption: string) {
     const currentField = this.questions[this.currentQuestionIndex].field;
@@ -39,7 +56,14 @@ export class SigortaFormComponent {
   }
 
   submitForm() {
-    this.sigortaService.submitApplication(this.answers).subscribe({
+    const formData = {
+      ...this.answers,
+      name: this.userInfo.name,
+      surname: this.userInfo.surname,
+      tc: this.userInfo.tc
+    };
+
+    this.sigortaService.submitApplication(formData).subscribe({
       next: (response) => {
         this.sigortaSonucu = response.sonuc;
         this.formSubmitted = true;
@@ -50,11 +74,6 @@ export class SigortaFormComponent {
     });
   }
 
-  isSidebarOpen = false;
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
 
   previousQuestion() {
     if (this.currentQuestionIndex > 0) {
@@ -72,5 +91,23 @@ export class SigortaFormComponent {
     const currentField = this.questions[this.currentQuestionIndex].field;
     return this.answers[currentField] === option;
   }
+
+  startNewUser() {
+    // kullanıcı bilgilerini sıfırlıyoruz
+    this.userInfo = { name: '', surname: '', tc: '' };
+    this.showQuestions = false; // Sorular kısmını gizle
+    this.currentQuestionIndex = 0; // Sorular sırasını sıfırlıyoruz
+
+    this.formSubmitted = false; // Sonuçları gizle
+    this.sigortaSonucu = ''; // Sonuçları temizle
+    this.resetForm();
+
+  }
+  isSidebarOpen = false;
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
 
 }
